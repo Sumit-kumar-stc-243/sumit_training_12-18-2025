@@ -255,6 +255,9 @@
       }
     {% endstyle %}
 
+    {% comment %} swiper css {% endcomment %}
+    <link rel="stylesheet" href="{{ 'swiper-bundle.css' | asset_url }}">
+
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -372,5 +375,8 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {% comment %} swiper js {% endcomment %}
+    <script src="{{ 'swiper-bundle.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

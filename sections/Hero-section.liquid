@@ -1,0 +1,315 @@
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .hero-slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-slide__media {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem;
+    gap: 1rem;
+    text-align: left;
+    color:rgb(255, 255, 255);
+  }
+
+  .hero-slide__eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .hero-slide__heading {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 32px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 5%;
+    color:white;
+    width:467px;
+  }
+
+  .hero-slide__subheading {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    max-width: 32rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .hero-slide__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-slide__button-primary {
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 2px 4px 0px #00000040;
+    background-color: #e16a28;
+    color: white;
+    justify-content: center;
+    padding: 0.75rem 1.75rem;
+    border-radius: 999px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .hero-slide__button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.75rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-slide__content {
+      align-items: center;
+      text-align: center;
+      padding: 1.75rem;
+    }
+
+    .hero-slide__buttons {
+      justify-content: center;
+    }
+  }
+</style>
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    {%- for block in section.blocks -%}
+      <div class="swiper-slide hero-slide" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="hero-slide__media">
+            <img
+              src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              width="{{ block.settings.image_width }}"
+              height="{{ block.settings.image_height }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.eyebrow != blank
+          or block.settings.heading != blank
+          or block.settings.subheading != blank
+          or block.settings.show_primary_button
+          or block.settings.show_secondary_button
+        -%}
+          <div
+            class="hero-slide__content"
+            style="color: {{ block.settings.text_color | default: '#ffffff' }};"
+          >
+            {%- if block.settings.eyebrow != blank -%}
+              <div class="hero-slide__eyebrow">
+                {{ block.settings.eyebrow | escape }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.heading != blank -%}
+              <h2 class="hero-slide__heading">
+                {{ block.settings.heading | escape }}
+              </h2>
+            {%- endif -%}
+
+            {%- if block.settings.subheading != blank -%}
+              <p class="hero-slide__subheading">
+                {{ block.settings.subheading }}
+              </p>
+            {%- endif -%}
+
+            {%- if block.settings.show_primary_button or block.settings.show_secondary_button -%}
+              <div class="hero-slide__buttons">
+                {%- if block.settings.show_primary_button
+                  and block.settings.primary_button_label != blank
+                  and block.settings.primary_button_link != blank
+                -%}
+                  <a
+                    href="{{ block.settings.primary_button_link }}"
+                    class="hero-slide__button-primary"
+                  >
+                    {{ block.settings.primary_button_label | escape }}
+                  </a>
+                {%- endif -%}
+
+                {%- if block.settings.show_secondary_button
+                  and block.settings.secondary_button_label != blank
+                  and block.settings.secondary_button_link != blank
+                -%}
+                  <a
+                    href="{{ block.settings.secondary_button_link }}"
+                    class="hero-slide__button-secondary"
+                  >
+                    {{ block.settings.secondary_button_label | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <!-- Fallback single slide if no blocks configured -->
+      <div class="swiper-slide hero-slide">
+        <div class="hero-slide__content">
+          <h2 class="hero-slide__heading">Add hero slides</h2>
+          <p class="hero-slide__subheading">Use the theme editor to add Hero slides with images, text, and buttons.</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 600,
+          "max": 2400,
+          "step": 100,
+          "unit": "px",
+          "label": "Image width",
+          "default": 1600
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "min": 300,
+          "max": 1400,
+          "step": 50,
+          "unit": "px",
+          "label": "Image height",
+          "default": 700
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow text (small text above heading)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading / description"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_primary_button",
+          "label": "Show primary button",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "primary_button_label",
+          "label": "Primary button label"
+        },
+        {
+          "type": "url",
+          "id": "primary_button_link",
+          "label": "Primary button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_secondary_button",
+          "label": "Show secondary button",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "secondary_button_label",
+          "label": "Secondary button label"
+        },
+        {
+          "type": "url",
+          "id": "secondary_button_link",
+          "label": "Secondary button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero slider",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
