@@ -9,8 +9,9 @@
  */
 {
   "current": {
-    "logo_width": 90,
-    "type_header_font": "assistant_n4",
+    "logo": "shopify://shop_images/CENTELLA_f2446dd8-b372-4409-9680-2f48c40f5237.png",
+    "logo_width": 270,
+    "type_header_font": "montserrat_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
@@ -202,6 +203,17 @@
           "background": "#db763f",
           "background_gradient": "",
           "text": "#ffffff",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-986aba74-ef15-4dc8-8511-8ac3f140049c": {
+        "settings": {
+          "background": "#ffe2d2",
+          "background_gradient": "",
+          "text": "#030303",
           "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
