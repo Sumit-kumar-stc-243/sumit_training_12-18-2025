@@ -208,6 +208,26 @@
   </div>
 </div>
 
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+
+    var sliders = document.querySelectorAll('.mySwiper');
+    if (!sliders.length) return;
+
+    sliders.forEach(function (slider) {
+      // Initialize Swiper for each hero slider instance
+      new Swiper(slider, {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        }
+      });
+    });
+  });
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "Hero slider",
