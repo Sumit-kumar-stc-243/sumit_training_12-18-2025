@@ -9,36 +9,55 @@
  */
 {
   "sections": {
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
+    "hero_section_MHDHR8": {
+      "type": "Hero-section",
+      "blocks": {
+        "slide_tmyEz7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_2.png",
+            "image_width": 1600,
+            "image_height": 700,
+            "eyebrow": "",
+            "heading": "Know Your Skin",
+            "subheading": "Just take a quick quiz to find the products that will work magic on your skin",
+            "text_color": "#000000",
+            "show_primary_button": true,
+            "primary_button_label": "SkincareQuiz",
+            "primary_button_link": "shopify://collections/trousers-pants-copy",
+            "show_secondary_button": false,
+            "secondary_button_label": "",
+            "secondary_button_link": ""
+          }
+        },
+        "slide_Hgc8xX": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_1_19fee19d-2946-42a8-9ee3-4b95c5565e4c.png",
+            "image_width": 1600,
+            "image_height": 700,
+            "eyebrow": "",
+            "heading": "Introducing Premium Beauty",
+            "subheading": "",
+            "text_color": "#ffffff",
+            "show_primary_button": true,
+            "primary_button_label": "Shop Now",
+            "primary_button_link": "shopify://collections",
+            "show_secondary_button": false,
+            "secondary_button_label": "",
+            "secondary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_tmyEz7",
+        "slide_Hgc8xX"
+      ],
+      "name": "Hero slider",
+      "settings": {}
     }
   },
   "order": [
-    "featured_collection"
+    "hero_section_MHDHR8"
   ]
 }
