@@ -1,0 +1,655 @@
+<style>
+  .hero-section-with-cart {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: stretch;
+    padding: 4rem 1.5rem;
+  }
+
+  .hero-section-with-cart__left {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    min-height: 340px;
+    color: #ffffff;
+  }
+
+  .hero-section-with-cart__background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+  }
+
+  .hero-section-with-cart__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
+  }
+
+  .hero-section-with-cart__content {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 2.5rem 2.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 480px;
+  }
+
+  .hero-section-with-cart__eyebrow {
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-section-with-cart__heading {
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0 0 0.75rem;
+  }
+
+  .hero-section-with-cart__text {
+    font-size: 0.975rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-section-with-cart__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: flex-start;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease, color 150ms ease;
+    background-color: #ffffff;
+    color: #111111;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+  }
+
+  .hero-section-with-cart__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+  }
+
+  .hero-section-with-cart__cta--outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+  }
+
+  .hero-section-with-cart__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-section-with-cart__right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-section-with-cart__categories-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.6);
+  }
+
+  .hero-section-with-cart__layout {
+    display: grid;
+    grid-template-columns: 0.9fr 2.1fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .hero-section-with-cart__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .hero-section-with-cart__category-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: background-color 150ms ease, border-color 150ms ease, transform 120ms ease, box-shadow 150ms ease, color 150ms ease;
+  }
+
+  .hero-section-with-cart__category-button span {
+    flex: 1;
+  }
+
+  .hero-section-with-cart__category-button svg {
+    margin-left: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .hero-section-with-cart__category-button--active {
+    background-color: #111827;
+    color: #ffffff;
+    border-color: #111827;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.35);
+  }
+
+  .hero-section-with-cart__category-button--active svg {
+    transform: translateX(1px);
+  }
+
+  .hero-section-with-cart__category-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
+  }
+
+  .hero-section-with-cart__products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .hero-section-with-cart__product-card {
+    position: relative;
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    background-color: #ffffff;
+    transition: box-shadow 150ms ease, transform 120ms ease, border-color 150ms ease;
+  }
+
+  .hero-section-with-cart__product-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+  }
+
+  .hero-section-with-cart__product-media {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-color: #f3f4f6;
+  }
+
+  .hero-section-with-cart__product-media img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .hero-section-with-cart__product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .hero-section-with-cart__product-collection {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.55);
+  }
+
+  .hero-section-with-cart__product-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .hero-section-with-cart__product-price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 0.1rem;
+  }
+
+  .hero-section-with-cart__product-actions {
+    margin-top: 0.2rem;
+  }
+
+  .hero-section-with-cart__product-add {
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: #111827;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, transform 120ms ease, box-shadow 150ms ease;
+  }
+
+  .hero-section-with-cart__product-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.24);
+  }
+
+  .hero-section-with-cart__product-add:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .hero-section-with-cart__product-empty {
+    font-size: 0.85rem;
+    color: rgba(15, 23, 42, 0.6);
+    padding: 1rem 0.5rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero-section-with-cart {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+
+    .hero-section-with-cart__layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-section-with-cart__products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero-section-with-cart {
+      padding-inline: 1rem;
+    }
+
+    .hero-section-with-cart__content {
+      padding: 1.8rem 1.5rem 1.9rem;
+    }
+
+    .hero-section-with-cart__products {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
+
+{%- liquid
+  assign section_bg_image = section.settings.background_image
+  assign active_index = 0
+-%}
+
+<div
+  class="hero-section-with-cart"
+  data-hero-cart-section
+  data-section-id="{{ section.id }}"
+>
+  <div class="hero-section-with-cart__left">
+    <div
+      class="hero-section-with-cart__background"
+      {% if section_bg_image != blank %}
+        style="background-image: url({{ section_bg_image | image_url: width: 1500 }})"
+      {% else %}
+        style="background-image: linear-gradient(135deg, #0f172a, #1f2937);"
+      {% endif %}
+    ></div>
+    <div class="hero-section-with-cart__overlay"></div>
+
+    <div class="hero-section-with-cart__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="hero-section-with-cart__eyebrow">
+          {{ section.settings.eyebrow }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="hero-section-with-cart__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="hero-section-with-cart__text">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+
+      <div class="hero-section-with-cart__actions">
+        {%- if section.settings.primary_button_label != blank -%}
+          <a
+            {% if section.settings.primary_button_link != blank %}
+              href="{{ section.settings.primary_button_link }}"
+            {% else %}
+              role="button"
+            {% endif %}
+            class="hero-section-with-cart__cta"
+          >
+            {{ section.settings.primary_button_label }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_button_label != blank -%}
+          <a
+            {% if section.settings.secondary_button_link != blank %}
+              href="{{ section.settings.secondary_button_link }}"
+            {% else %}
+              role="button"
+            {% endif %}
+            class="hero-section-with-cart__cta hero-section-with-cart__cta--outline"
+          >
+            {{ section.settings.secondary_button_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-section-with-cart__right">
+    <div>
+      <div class="hero-section-with-cart__categories-label">
+        {{ section.settings.category_label | default: 'Shop by category' }}
+      </div>
+    </div>
+
+    <div class="hero-section-with-cart__layout">
+      <div
+        class="hero-section-with-cart__categories"
+        data-hero-cart-categories
+      >
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- assign is_active = false -%}
+            {%- if forloop.index0 == active_index -%}
+              {%- assign is_active = true -%}
+            {%- endif -%}
+
+            <button
+              class="hero-section-with-cart__category-button {% if is_active %}hero-section-with-cart__category-button--active{% endif %}"
+              type="button"
+              data-hero-cart-category-button
+              data-target="{{ section.id }}-category-{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+              <span>
+                {%- if block.settings.collection != blank -%}
+                  {{ block.settings.collection.title }}
+                {%- else -%}
+                  {{ block.settings.fallback_title | default: 'Category ' | append: forloop.index }}
+                {%- endif -%}
+              </span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4.5 3.75L10.25 7.99935L4.5 12.25"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          {%- endfor -%}
+        {%- else -%}
+          <p class="hero-section-with-cart__product-empty">
+            {{ 'sections.onboarding.add_block' | t }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      <div
+        class="hero-section-with-cart__products"
+        data-hero-cart-products
+      >
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- assign is_active = false -%}
+            {%- if forloop.index0 == active_index -%}
+              {%- assign is_active = true -%}
+            {%- endif -%}
+
+            <div
+              class="hero-section-with-cart__products-panel"
+              data-hero-cart-category-panel
+              data-id="{{ section.id }}-category-{{ forloop.index0 }}"
+              {% unless is_active %}
+                style="display: none;"
+              {% endunless %}
+            >
+              {%- if block.settings.collection != blank and block.settings.collection.products_count > 0 -%}
+                {%- assign max_products = section.settings.products_to_show | default: 3 -%}
+                {%- for product in block.settings.collection.products limit: max_products -%}
+                  <article
+                    class="hero-section-with-cart__product-card"
+                    {{ block.shopify_attributes }}
+                  >
+                    <a
+                      href="{{ product.url }}"
+                      class="hero-section-with-cart__product-media"
+                    >
+                      {%- if product.featured_media != blank -%}
+                        {{
+                          product.featured_media
+                          | image_url: width: 480
+                          | image_tag:
+                            loading: 'lazy',
+                            sizes: '(min-width: 1024px) 240px, 50vw',
+                            widths: '240,360,480'
+                        }}
+                      {%- else -%}
+                        {{
+                          'image'
+                          | placeholder_svg_tag: 'placeholder-svg'
+                        }}
+                      {%- endif -%}
+                    </a>
+
+                    <div class="hero-section-with-cart__product-meta">
+                      <div class="hero-section-with-cart__product-collection">
+                        {{ block.settings.collection.title | default: 'Collection' }}
+                      </div>
+                      <h3 class="hero-section-with-cart__product-title">
+                        <a href="{{ product.url }}">
+                          {{ product.title }}
+                        </a>
+                      </h3>
+                      <div class="hero-section-with-cart__product-price">
+                        {%- render 'price', product: product -%}
+                      </div>
+                    </div>
+
+                    <div class="hero-section-with-cart__product-actions">
+                      {%- form 'product', product, id: 'hero-section-with-cart-' | append: section.id | append: '-' | append: product.id, class: 'product-form' -%}
+                        <input
+                          type="hidden"
+                          name="id"
+                          value="{{ product.selected_or_first_available_variant.id }}"
+                        >
+                        <button
+                          type="submit"
+                          class="hero-section-with-cart__product-add"
+                          {% unless product.available %}
+                            disabled
+                          {% endunless %}
+                        >
+                          {%- if product.available -%}
+                            {{ section.settings.add_to_bag_label | default: 'Add to bag' }}
+                          {%- else -%}
+                            {{ 'products.product.sold_out' | t }}
+                          {%- endif -%}
+                        </button>
+                      {%- endform -%}
+                    </div>
+                  </article>
+                {%- endfor -%}
+              {%- else -%}
+                <div class="hero-section-with-cart__product-empty">
+                  {%- if block.settings.collection == blank -%}
+                    {{ 'sections.collection_list.no_collection' | t }}
+                  {%- else -%}
+                    {{ 'sections.collection_template.empty' | t }}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const section = document.querySelector(
+      '[data-hero-cart-section][data-section-id="{{ section.id }}"]'
+    );
+    if (!section) return;
+
+    const buttons = section.querySelectorAll('[data-hero-cart-category-button]');
+    const panels = section.querySelectorAll('[data-hero-cart-category-panel]');
+
+    if (!buttons.length || !panels.length) return;
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+
+        buttons.forEach((btn) =>
+          btn.classList.remove('hero-section-with-cart__category-button--active')
+        );
+        button.classList.add('hero-section-with-cart__category-button--active');
+
+        panels.forEach((panel) => {
+          if (panel.getAttribute('data-id') === targetId) {
+            panel.style.display = '';
+          } else {
+            panel.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero section with cart",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "New collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Elevate your everyday essentials"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Curated picks from our most-loved categories. Select a category on the right to discover up to three featured products.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary button label",
+      "default": "Shop all"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary button label",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "category_label",
+      "label": "Category menu label",
+      "default": "Shop by category"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products per category",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "add_to_bag_label",
+      "label": "Add to bag button label",
+      "default": "Add to bag"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "fallback_title",
+          "label": "Category title (fallback)",
+          "default": "Category"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Hero section with cart",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}
