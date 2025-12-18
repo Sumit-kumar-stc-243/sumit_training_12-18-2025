@@ -78,7 +78,7 @@
               loading="lazy"
               width="{{ section.settings.image_max_width }}"
               height="{{ section.settings.image_max_width | divided_by: block.settings.image.aspect_ratio | round }}"
-              style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }}px;"
+              style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }};"
             >
           {%- endif -%}
         </div>
@@ -224,14 +224,10 @@
           ]
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "image_border_radius",
-          "label": "Image border radius",
-          "min": 0,
-          "max": 40,
-          "step": 1,
-          "unit": "px",
-          "default": 12
+          "label": "Image border radius (CSS value, e.g. '60px 0 0 0')",
+          "default": "12px"
         },
         {
           "type": "color",
