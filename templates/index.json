@@ -29,28 +29,10 @@
             "secondary_button_label": "",
             "secondary_button_link": ""
           }
-        },
-        "slide_zhXnyW": {
-          "type": "slide",
-          "settings": {
-            "image_width": 1600,
-            "image_height": 700,
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "text_color": "#ffffff",
-            "show_primary_button": false,
-            "primary_button_label": "",
-            "primary_button_link": "",
-            "show_secondary_button": false,
-            "secondary_button_label": "",
-            "secondary_button_link": ""
-          }
         }
       },
       "block_order": [
-        "slide_Hgc8xX",
-        "slide_zhXnyW"
+        "slide_Hgc8xX"
       ],
       "name": "Hero slider",
       "settings": {}
