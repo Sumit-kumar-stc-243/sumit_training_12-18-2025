@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "hero_section_MHDHR8": {
       "type": "Hero-section",
@@ -55,9 +55,94 @@
       ],
       "name": "Hero slider",
       "settings": {}
+    },
+    "custom_collection_chqxEw": {
+      "type": "custom-collection",
+      "blocks": {
+        "custom_collection_MhPfhh": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/image_44.jpg",
+            "title": "Face Oils",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "60px 0 0 0",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_anEgHP": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/image_46.jpg",
+            "title": "Serums",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "0",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_VKATcJ": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/image_47.jpg",
+            "title": "Cleansers",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "0",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_9RjzbJ": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/image_45.jpg",
+            "title": "Bath",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "0px 0 60px 0",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "custom_collection_MhPfhh",
+        "custom_collection_anEgHP",
+        "custom_collection_VKATcJ",
+        "custom_collection_9RjzbJ"
+      ],
+      "custom_css": [
+        ".custom-collection-section {padding: 40px 40px; }"
+      ],
+      "name": "Custom collection",
+      "settings": {
+        "heading": "GET STARTED",
+        "heading_alignment": "center",
+        "heading_color": "#111111",
+        "heading_font_size": 28,
+        "card_text_alignment": "center",
+        "image_aspect_ratio": "square",
+        "image_max_width": 190
+      }
     }
   },
   "order": [
-    "hero_section_MHDHR8"
+    "hero_section_MHDHR8",
+    "custom_collection_chqxEw"
   ]
 }
