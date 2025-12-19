@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero_section_MHDHR8": {
       "type": "Hero-section",
@@ -127,7 +127,7 @@
         "custom_collection_9RjzbJ"
       ],
       "custom_css": [
-        ".custom-collection-section {padding: 40px 40px; }"
+        ".custom-collection-section {padding: 40px 40px;}"
       ],
       "name": "Custom collection",
       "settings": {
@@ -139,10 +139,131 @@
         "image_aspect_ratio": "square",
         "image_max_width": 190
       }
+    },
+    "custom_collection_WK6QnB": {
+      "type": "custom-collection",
+      "blocks": {
+        "custom_collection_geh3Jm": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Group_14071_822766f1-9211-4690-a1d9-dc0033f94753.png",
+            "title": "Vegan",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_4KrhFa": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Group_14073.png",
+            "title": "Non-Toxic",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_7PAg3U": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Group_14075_1ff9896a-817a-4ded-bc51-4129f8931411.png",
+            "title": "Recyclable Packaging",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_xCNjtC": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Group_14070_9a46abc9-bc3c-415b-8b18-cd8faf256154.png",
+            "title": "Clean Beauty",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_hLy3fR": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Group_14072.png",
+            "title": "Sulphate Free",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        },
+        "custom_collection_b8DVdJ": {
+          "type": "custom_collection",
+          "settings": {
+            "image": "shopify://shop_images/Frame_240923_713c901e-54a8-439d-a7f6-295885069d24.jpg",
+            "title": "Cruelty Free",
+            "card_text_alignment": "center",
+            "subtitle": "",
+            "image_aspect_ratio": "square",
+            "image_border_radius": "12px",
+            "item_title_color": "#111111",
+            "item_title_font_size": 16,
+            "item_subtitle_color": "#555555",
+            "item_subtitle_font_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "custom_collection_geh3Jm",
+        "custom_collection_4KrhFa",
+        "custom_collection_7PAg3U",
+        "custom_collection_xCNjtC",
+        "custom_collection_hLy3fR",
+        "custom_collection_b8DVdJ"
+      ],
+      "custom_css": [
+        ".custom-collection-section {background-color: #ffe2d233;}",
+        ".custom-collection-section .collection-container {justify-items: center;}",
+        ".custom-collection-section .collection-item {display: flex; flex-direction: column; /* align-content: center; */ justify-content: center; align-items: center; width: 120px;}",
+        ".custom-collection-section img {width: 100px; height: 100px; object-fit: contain; margin: 0px auto;}",
+        ".collection-item-image {width: 100px; height: 100px;}"
+      ],
+      "name": "Custom collection",
+      "settings": {
+        "heading": "Make a good choice.",
+        "heading_alignment": "center",
+        "heading_color": "#111111",
+        "heading_font_size": 28,
+        "card_text_alignment": "center",
+        "image_aspect_ratio": "square",
+        "image_max_width": 400
+      }
     }
   },
   "order": [
     "hero_section_MHDHR8",
-    "custom_collection_chqxEw"
+    "custom_collection_chqxEw",
+    "custom_collection_WK6QnB"
   ]
 }
