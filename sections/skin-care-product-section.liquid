@@ -61,28 +61,77 @@
   }
   .skin-care-category{
     border: none;
-    background-color: white;
+    background-color: transparent;
     border-radius: 16px;
     padding: 8px 24px;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
+   }
+   .skin-care-category.active{
+    background-color: white;
+    border: 1px solid #FFFFFF;
+   }
+   .collection-products-wrapper{
+    display: none;
+   }
+   .collection-products-wrapper.active{
+    display: block;
    }
    .skin-care-products{
     display:flex;
     gap:10px;
-    overflow-x:scroll;
-    width:200px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;
+    width:467px;
+    height:100%;
     }
+    .skin-care-products::-webkit-scrollbar {
+        display: none;              /* Chrome / Safari */
+      }
     .product-item{
     background: white;
     color: black;
+    border-radius:20px;
+    padding:8px;
     }
-    .product-item  p{
+    .product-item p{
       padding: 0px;
       margin: 0px;
     }
+    .product-item a{
+        display:flex;
+        justify-content:center;
+    }
     .skin-care-show-products{
-      top:100px !important;
+      top:120px !important;
+      background-color: transparent !important;
+      border:none;
+      width: 467px;
+      right:5px;
+      height: 270px;
+    }
+    .product-item-image{
+        width: 130px;
+        border-radius:16px;
+        height: 110px;
+    }
+    .product-title , .product-price{
+        margin-top:4px !important;
+        font-weight:700;
+    }
+    .product-type{
+        margin-top: -3px;
+        line-height: 17px;
+    }
+    .product-btn{
+        border:1px solid #E16A28;
+        border-radius:20px;
+        background-color:transparent;
+        padding:9px 28px;
+        cursor:pointer;
     }
 </style>
 
@@ -111,7 +160,11 @@
       {% assign collection = collections[block.settings.collection] %}
       {% if collection %}
         <div class="skin-care-cart-section">
-          <button class="skin-care-category">
+          <button 
+            class="skin-care-category {% if forloop.first %}active{% endif %}" 
+            data-collection-handle="{{ collection.handle }}"
+            data-block-index="{{ forloop.index0 }}"
+          >
             {{ block.settings.category_title }}
           </button>
         </div>
@@ -119,25 +172,66 @@
     {% endfor %}
   </div>
   <div class="skin-care-collections skin-care-show-products">
-    <div class="skin-care-products">
-      {% for product in collection.products limit: section.settings.products_limit %}
-        <div class="product-item">
-          <a href="{{ product.url }}">
-            <img
-              src="{{ product.featured_image | image_url: width: 400 }}"
-              alt="{{ product.title }}"
-              width="200px"
-              height="250px"
-            >
-          </a>
-          <p class="product-title">{{ product.title }}</p>
-          <p class="product-type">{{ product.type }}</p>
-          <p class="product-price">{{ product.price | money }}</p>
-          <button class="product-btn">{{ section.settings.button_label }}</button>
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {% if collection %}
+        <div class="collection-products-wrapper {% if forloop.first %}active{% endif %}" data-collection-handle="{{ collection.handle }}">
+          <div class="skin-care-products">
+            {% assign products_limit = section.settings.products_limit | default: 4 %}
+            {% for product in collection.products limit: products_limit %}
+              <div class="product-item">
+                <a href="{{ product.url }}">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 400 }}"
+                    alt="{{ product.title }}"
+                    width="200px"
+                    height="250px"
+                    class="product-item-image"
+                  >
+                </a>
+                <p class="product-title">{{ product.title }}</p>
+                <p class="product-type">{{ product.type }}</p>
+                <p class="product-price">{{ product.price | money }}</p>
+                <button class="product-btn">{{ section.settings.button_label }}</button>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-      {% endfor %}
-    </div>
+      {% endif %}
+    {% endfor %}
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryButtons = document.querySelectorAll('.skin-care-category');
+      const productWrappers = document.querySelectorAll('.collection-products-wrapper');
+
+      categoryButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const collectionHandle = this.getAttribute('data-collection-handle');
+          
+          // Remove active class from all buttons (removes background and border)
+          categoryButtons.forEach(function(btn) {
+            btn.classList.remove('active');
+          });
+          
+          // Add active class to clicked button (adds background and border)
+          this.classList.add('active');
+          
+          // Hide all product wrappers
+          productWrappers.forEach(function(wrapper) {
+            wrapper.classList.remove('active');
+          });
+          
+          // Show only the selected collection's products
+          const targetWrapper = document.querySelector('.collection-products-wrapper[data-collection-handle="' + collectionHandle + '"]');
+          if (targetWrapper) {
+            targetWrapper.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 </div>
 
 {% schema %}

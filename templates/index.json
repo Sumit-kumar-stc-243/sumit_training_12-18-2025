@@ -267,14 +267,14 @@
           "type": "category",
           "settings": {
             "category_title": "Male",
-            "collection": "featured-products"
+            "collection": "backpacks"
           }
         },
         "category_faG6Yn": {
           "type": "category",
           "settings": {
             "category_title": "Female",
-            "collection": "best-seller"
+            "collection": "trousers-pants-copy"
           }
         }
       },
