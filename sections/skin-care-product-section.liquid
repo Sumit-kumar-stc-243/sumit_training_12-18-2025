@@ -1,0 +1,380 @@
+<style>
+    .skin-care-product-section{
+        position:relative;
+    }
+    .skin-care-background-image{
+
+    }
+    .background_overlay_color{
+        background-color:{{ section.settings.background_overlay_color }};
+        position:absolute;
+        opacity: {{ section.settings.background_overlay_opacity | divided_by: 10.0 }};
+        background-color: #000000;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: {% if section.settings.background_overlay_height != blank %}{{ section.settings.background_overlay_height }}{% else %}400{% endif %}px;
+        top: 0px;
+        display: block !important;
+    }
+   .skin-care-product-section-heading {
+    color: #c2c2c2;
+    position: absolute;
+    font-weight: 700;
+    {% if section.settings.heading_top != blank %}top: {{ section.settings.heading_top }}px;{% endif %}
+    {% if section.settings.heading_left != blank %}left: {{ section.settings.heading_left }}px;{% endif %}
+    {% if section.settings.heading_bottom != blank %}bottom: {{ section.settings.heading_bottom }}px;{% endif %}
+    {% if section.settings.heading_right != blank %}right: {{ section.settings.heading_right }}px;{% endif %}
+    color: {{ section.settings.heading_color }};
+    opacity: {{ section.settings.heading_opacity | divided_by:10.0 }};
+    font-size: {{ section.settings.font_size_heading }}px;
+    z-index:2;
+  }
+
+  .skin-care-product-section-sub-heading {
+    color: #c2c2c2;
+    position: absolute;
+    font-weight: 700;
+    {% if section.settings.sub_heading_top != blank %}top: {{ section.settings.sub_heading_top }}px;{% endif %}
+    {% if section.settings.sub_heading_left != blank %}left: {{ section.settings.sub_heading_left }}px;{% endif %}
+    {% if section.settings.sub_heading_bottom != blank %}bottom: {{ section.settings.sub_heading_bottom }}px;{% endif %}
+    {% if section.settings.sub_heading_right != blank %}right: {{ section.settings.sub_heading_right }}px;{% endif %}
+    color: {{ section.settings.sub_heading_color }};
+    opacity: {{ section.settings.sub_heading_opacity  | divided_by:10.0  }};
+    font-size: {{ section.settings.font_size_sub_heading }}px;
+    z-index:2;
+  }
+  .skin-care-collections{
+    position: absolute;
+    top: 40px;
+    color: white;
+    right: 100px;
+    background-color: #F7841D;
+    border: 1px solid #FFFFFF;
+    display: flex;
+    width: 240px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+    border-radius:16px;
+  }
+  .skin-care-category{
+    border: none;
+    background-color: white;
+    border-radius: 16px;
+    padding: 8px 24px;
+    font-size: 16px;
+    cursor: pointer;
+   }
+   .skin-care-products{
+    display:flex;
+    gap:10px;
+    overflow-x:scroll;
+    width:200px;
+    }
+    .product-item{
+    background: white;
+    color: black;
+    }
+    .product-item  p{
+      padding: 0px;
+      margin: 0px;
+    }
+    .skin-care-show-products{
+      top:100px !important;
+    }
+</style>
+
+<div class="skin-care-product-section">
+  {% if section.settings.background_image != blank %}
+    <img
+      src="{{ section.settings.background_image | image_url: width: 400 }}"
+      alt="{{ product.title }}"
+      width="100%"
+      height="{% if section.settings.background_overlay_height != blank %}{{ section.settings.background_overlay_height }}{% else %}400{% endif %}px"
+      class="skin-care-background-image"
+    >
+  {% endif %}
+  {% if section.settings.background_overlay_color != blank %}
+    <div class="background_overlay_color"></div>
+  {% endif %}
+  {% if section.settings.heading != blank %}
+    <div class="skin-care-product-section-heading">{{ section.settings.heading }}</div>
+  {% endif %}
+  {% if section.settings.sub_heading != blank %}
+    <div class="skin-care-product-section-sub-heading">{{ section.settings.sub_heading }}</div>
+  {% endif %}
+
+  <div class="skin-care-collections">
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {% if collection %}
+        <div class="skin-care-cart-section">
+          <button class="skin-care-category">
+            {{ block.settings.category_title }}
+          </button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="skin-care-collections skin-care-show-products">
+    <div class="skin-care-products">
+      {% for product in collection.products limit: section.settings.products_limit %}
+        <div class="product-item">
+          <a href="{{ product.url }}">
+            <img
+              src="{{ product.featured_image | image_url: width: 400 }}"
+              alt="{{ product.title }}"
+              width="200px"
+              height="250px"
+            >
+          </a>
+          <p class="product-title">{{ product.title }}</p>
+          <p class="product-type">{{ product.type }}</p>
+          <p class="product-price">{{ product.price | money }}</p>
+          <button class="product-btn">{{ section.settings.button_label }}</button>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "background_overlay_color",
+      "label": "Background overlay color"
+    },
+    {
+      "type": "text",
+      "id": "background_overlay_height",
+      "label": "Background Overlay Height (px)",
+      "info": "Enter number only",
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "background_overlay_opacity",
+      "label": "Background overlay opacity (1–10)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Main Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_opacity",
+      "label": "Heading Opacity",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size_heading",
+      "label": "Font Size",
+      "min": 16,
+      "max": 60,
+      "default": 24,
+      "step": 1
+    },
+    {
+      "type": "text",
+      "id": "heading_top",
+      "label": "Heading Top (px)",
+      "info": "Enter number only",
+      "default": "100"
+    },
+    {
+      "type": "text",
+      "id": "heading_left",
+      "label": "Heading Left (px)",
+      "info": "Enter number only",
+      "default": "91"
+    },
+    {
+      "type": "text",
+      "id": "heading_bottom",
+      "label": "Heading Bottom (px)",
+      "info": "Enter number only"
+    },
+    {
+      "type": "text",
+      "id": "heading_right",
+      "label": "Heading Right (px)",
+      "info": "Enter number only"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "Sub Heading"
+    },
+    {
+      "type": "range",
+      "id": "sub_heading_opacity",
+      "label": "Sub Heading Opacity",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "sub_heading_color",
+      "label": "Sub heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size_sub_heading",
+      "label": "Font Size",
+      "min": 16,
+      "max": 60,
+      "default": 24,
+      "step": 1
+    },
+    {
+      "type": "text",
+      "id": "sub_heading_top",
+      "label": "Sub Heading Top (px)",
+      "info": "Enter number only",
+      "default": "150"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading_left",
+      "label": "Sub Heading Left (px)",
+      "info": "Enter number only",
+      "default": "91"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading_bottom",
+      "label": "Sub Heading Bottom (px)",
+      "info": "Enter number only"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading_right",
+      "label": "Sub Heading Right (px)",
+      "info": "Enter number only"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Category Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border Width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#dddddd"
+    },
+    {
+      "type": "text",
+      "id": "box_shadow",
+      "label": "Box Shadow (CSS)",
+      "default": "0 4px 10px rgba(0,0,0,0.1)"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products Per Category",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Product button label",
+      "default": "Add to cart"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_title",
+          "label": "Category Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Category Collection",
+      "blocks": [
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

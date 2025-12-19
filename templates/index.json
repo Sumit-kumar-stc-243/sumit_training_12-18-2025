@@ -259,11 +259,67 @@
         "image_aspect_ratio": "square",
         "image_max_width": 400
       }
+    },
+    "skin_care_product_section_DAFCwh": {
+      "type": "skin-care-product-section",
+      "blocks": {
+        "category_z7mq4m": {
+          "type": "category",
+          "settings": {
+            "category_title": "Male",
+            "collection": "featured-products"
+          }
+        },
+        "category_faG6Yn": {
+          "type": "category",
+          "settings": {
+            "category_title": "Female",
+            "collection": "best-seller"
+          }
+        }
+      },
+      "block_order": [
+        "category_z7mq4m",
+        "category_faG6Yn"
+      ],
+      "name": "Category Collection",
+      "settings": {
+        "background_image": "shopify://shop_images/beauty-portrait-mystery-smiling-ginger-woman-with-long-hair-posing-sideways-looking_1.png",
+        "background_overlay_color": "#000000",
+        "background_overlay_height": "400",
+        "background_overlay_opacity": 3,
+        "heading": "SKINCARE",
+        "heading_opacity": 8,
+        "heading_color": "#a7a1a1",
+        "font_size_heading": 60,
+        "heading_top": "100",
+        "heading_left": "91",
+        "heading_bottom": "",
+        "heading_right": "",
+        "sub_heading": "ESSENTIALS",
+        "sub_heading_opacity": 10,
+        "sub_heading_color": "#ffffff",
+        "font_size_sub_heading": 60,
+        "sub_heading_top": "150",
+        "sub_heading_left": "91",
+        "sub_heading_bottom": "",
+        "sub_heading_right": "",
+        "bg_color": "#ffffff",
+        "card_bg": "#ffffff",
+        "text_color": "#000000",
+        "border_radius": 8,
+        "border_width": 1,
+        "border_color": "#dddddd",
+        "box_shadow": "0 4px 10px rgba(0,0,0,0.1)",
+        "products_limit": 4,
+        "button_label": "Add to cart"
+      }
     }
   },
   "order": [
     "hero_section_MHDHR8",
     "custom_collection_chqxEw",
-    "custom_collection_WK6QnB"
+    "custom_collection_WK6QnB",
+    "skin_care_product_section_DAFCwh"
   ]
 }
