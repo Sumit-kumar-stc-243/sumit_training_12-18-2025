@@ -109,7 +109,13 @@
               {{ product_info.price }}
             </span>
             <div class="buttonCart">
-              <button>ADD TO BAG</button>
+              <button
+                onclick="handleAddToCart(this)"
+                class="add-to-cart"
+                data-variant-id="{{ button.settings.choose_product.selected_or_first_available_variant.id }}"
+              >
+                Add to Cart
+              </button>
               <a href="{{ product_info.url }}">View</a>
             </div>
           </div>
@@ -156,6 +162,51 @@
     clickedButton.disabled = true;
     clickedButton.style.opacity = '0.6';
     clickedButton.style.cursor = 'not-allowed';
+  };
+
+  window.handleAddToCart = function (clickedButton) {
+    const variantId = clickedButton.dataset.variantId;
+    let formData = {
+      items: [
+        {
+          id: variantId,
+          quantity: 1,
+        },
+      ],
+    };
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then(() => fetch('/cart?section_id=cart-drawer'))
+      .then((res) => res.text())
+      .then((html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newDrawer = doc.getElementsByTagName('cart-drawer')[0];
+        const currentDrawer = document.getElementsByTagName('cart-drawer')[0];
+
+        if (currentDrawer) {
+          currentDrawer.classList.remove('is-empty');
+        }
+
+        if (newDrawer && currentDrawer) {
+          currentDrawer.innerHTML = newDrawer.innerHTML;
+        }
+
+        // ✅ Proper Dawn way
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer) cartDrawer.open();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 {% endjavascript %}
 
