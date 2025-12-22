@@ -314,12 +314,45 @@
         "products_limit": 4,
         "button_label": "Add to cart"
       }
+    },
+    "product_cta_b9WECM": {
+      "type": "product-cta",
+      "blocks": {
+        "button_HtJL8A": {
+          "type": "button",
+          "settings": {
+            "range_y_axis": 50,
+            "range_X_axis": 42,
+            "choose_product": "4mm-5mm-6mm-balldriver-y-wrench"
+          }
+        },
+        "button_MpdYLa": {
+          "type": "button",
+          "settings": {
+            "range_y_axis": 65,
+            "range_X_axis": 34,
+            "choose_product": "rossignol-pursuit-200-carbon-xelium-skis-xelium-110-b83-bindings-2016"
+          }
+        }
+      },
+      "block_order": [
+        "button_HtJL8A",
+        "button_MpdYLa"
+      ],
+      "name": "Product CTA",
+      "settings": {
+        "background_image": "shopify://shop_images/bestsellers_1_550d10c3-5b91-44df-a4bd-86ec70e6bb8a.png",
+        "background_image_height": 400,
+        "overlay_color": "#000000",
+        "background_color_opacity": 0
+      }
     }
   },
   "order": [
     "hero_section_MHDHR8",
     "custom_collection_chqxEw",
     "custom_collection_WK6QnB",
-    "skin_care_product_section_DAFCwh"
+    "skin_care_product_section_DAFCwh",
+    "product_cta_b9WECM"
   ]
 }
