@@ -1,0 +1,231 @@
+<style>
+  .product-cta{
+    position:relative;
+   }
+  .backgroundImage {
+
+  }
+  .background_overlay{
+      position: absolute;
+      top: 0px;
+      background-color: {{ section.settings.overlay_color }};
+      opacity: {{ section.settings.background_color_opacity | divided_by: 10.0 }};
+      width:100%;
+      height:{{ section.settings.background_image_height  }}px;
+  }
+  .products-button {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height:{{ section.settings.background_image_height  }}px;
+  }
+  .cta {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    background-color: blue;
+    width: 17px;
+    height: 24px;
+    border: 6px solid #D9D9D9;
+    cursor:pointer;
+  }
+  .product-cart{
+    background-color:white;
+    height:163px;
+    max-width:412px;
+    border-radius:6px;
+    padding:6px;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+  .product-cart.active{
+    display:flex;
+   }
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  .productDetails h2{
+    font-size:17px;
+    font-weight:400;
+    line-height:24px;
+    margin:0px;
+  }
+  .productImage{
+    border-radius:6px;
+    margin-right:4px;
+   }
+   .buttonCart button{
+    background-color:#F7CA00;
+    font-weight:600;
+    font-size:16px;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px 0px #00000040;
+    margin-right:15px;
+    cursor:pointer;
+   }
+</style>
+
+<div class="product-cta">
+  {% if section.settings.background_image != blank %}
+    <img
+      src="{{ section.settings.background_image | image_url: width: 2000 }}"
+      height="{{ section.settings.background_image_height }}"
+      width="100%"
+      class="backgroundImage"
+    >
+  {% endif %}
+
+  <div class="background_overlay">&nbsp;</div>
+  <div class="products-button">
+    {% for button in section.blocks %}
+      {% if button.settings.choose_product != blank %}
+        <button
+          class="cta"
+          style="
+            top: {{ button.settings.range_y_axis }}%;
+            left: {{ button.settings.range_X_axis }}%;
+          "
+          onclick="handleCtaButton(this)"
+          data-product-id="{{ button.settings.choose_product.id }}"
+        ></button>
+        {% assign product_info = button.settings.choose_product %}
+        <div class="product-cart" data-product-id="{{ button.settings.choose_product.id }}">
+          <img
+            src="{{product_info.featured_image | image_url: width: 2000  }}"
+            height="100px"
+            width="100px"
+            class="productImage"
+          >
+          <div class="productDetails">
+            <h2>{{ product_info.title }}</h2>
+            <span>{{ product_info.type }}</span>
+            <span>
+              {{- shop.currency }}
+              {{ product_info.price }}
+            </span>
+            <div class="buttonCart">
+              <button>ADD TO BAG</button>
+              <a href="{{ product_info.url }}">View</a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% javascript %}
+  window.handleCtaButton = function (clickedButton) {
+    const productId = clickedButton.dataset.productId;
+
+    const allButtons = document.querySelectorAll('.cta');
+    const allCarts = document.querySelectorAll('.product-cart');
+
+    // Find matching cart
+    const currentCart = document.querySelector(`.product-cart[data-product-id="${productId}"]`);
+
+    // 🔴 SAFETY CHECK (this fixes your error)
+    if (!currentCart) {
+      console.warn('No product cart found for productId:', productId);
+      return;
+    }
+
+    const isAlreadyActive = currentCart.classList.contains('active');
+
+    // Reset all buttons
+    allButtons.forEach((btn) => {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+    });
+
+    // Close all carts
+    allCarts.forEach((cart) => cart.classList.remove('active'));
+
+    // Toggle behavior
+    if (isAlreadyActive) return;
+
+    // Open selected cart
+    currentCart.classList.add('active');
+
+    // Disable clicked button
+    clickedButton.disabled = true;
+    clickedButton.style.opacity = '0.6';
+    clickedButton.style.cursor = 'not-allowed';
+  };
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "product-cta",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "number",
+      "id": "background_image_height",
+      "label": "Background Image Height",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Background overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "background_color_opacity",
+      "label": "Background Color Opacity",
+      "min": 0,
+      "max": 10,
+      "default": 0,
+      "step": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Add Button",
+      "settings": [
+        {
+          "type": "range",
+          "id": "range_y_axis",
+          "label": "Y-Axis (Top)",
+          "default": 50,
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "type": "range",
+          "id": "range_X_axis",
+          "label": "X-Axis (Left)",
+          "default": 50,
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "type": "product",
+          "id": "choose_product",
+          "label": "Choose Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product CTA",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
