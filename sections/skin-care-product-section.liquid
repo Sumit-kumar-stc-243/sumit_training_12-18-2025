@@ -193,7 +193,10 @@
                 <p class="product-title">{{ product.title }}</p>
                 <p class="product-type">{{ product.type }}</p>
                 <p class="product-price">{{ product.price | money }}</p>
-                <button class="product-btn">{{ section.settings.button_label }}</button>
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="product-btn">{{ section.settings.button_label }}</button>
+                </form>
               </div>
             {% endfor %}
           </div>
