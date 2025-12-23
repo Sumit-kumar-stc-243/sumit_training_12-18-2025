@@ -1,6 +1,234 @@
 <style>
+  .best-seller-container {
+    margin-bottom:20px !important;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 0px 32px;
+  }
+  .shop_btn{
+    background-color: {{ section.settings.button_color }};
+    border:none;
+    color:white;
+    border-radius:90px;
+    padding:5px 66px;
+    cursor:pointer;
+    font-size: 16px;
+  }
+  .swiper-slide{
+    background:none;
+  }
+  .product-image{
+    border-radius:20px;
+    height: 170px !important;
+    width: 197px !important;
+    object-fit: contain !important;
+  }
+  .product-card{
+    text-align:left;
+  }
+  .product-card h4{
+    font-size: 15px;
+    font-weight: 400;
+    color: #3F434C;
+    margin: 0px;
+  }
+  .product-card h5{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0px;
+  }
+  .product-card button{
+    outline:none;
+    border:1px solid #DB763F ;
+    border-radius:20px;
+    padding:9px 28px;
+    background:none;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .bestSellerProducts {
+    padding-bottom: 30px;
+  }
+  .bestSellerProducts .swiper-scrollbar {
+    height: 4px;
+    background: #e5e5e5;
+    bottom: 0;
+  }
 
+  .bestSellerProducts .swiper-scrollbar-drag {
+    background:rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+  .swiper-slide a{
+    text-decoration:none;
+  }
+  .swiper-button-next .swiper-button-prev{
+    position: static !important;
+    width: 10px !important;
+  }
 </style>
 
+<div class="best-seller-container">
+  <div class="best-seller-content">
+    {% if section.settings.main_heading != blank %}
+      <h1>{{ section.settings.main_heading }}</h1>
+    {% endif %}
 
-<div class="best-seller-container"></div>
+    {% if section.settings.sub_main_heading != blank %}
+      <p>{{ section.settings.sub_main_heading }}</p>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.best_seller.url }}">
+        <button type="button" class="shop_btn">{{ section.settings.button_text }}</button>
+      </a>
+    {% endif %}
+  </div>
+  <div class="swiper bestSellerProducts">
+    <div class="swiper-wrapper">
+      {% if section.settings.best_seller != blank %}
+        {% for product in section.settings.best_seller.products limit: section.settings.show_product_limit %}
+          <div class="swiper-slide">
+            <a href="{{ product.url }}">
+              <div class="product-card">
+                <img
+                  src="{{ product.featured_image | image_url: width: 300 }}"
+                  alt="{{ product.title }}"
+                  loading="lazy"
+                  height="290px"
+                  width="271px"
+                  class="product-image"
+                >
+                <h4>{{ product.title }}</h4>
+                <h5>{{ product.type }}</h5>
+                <button>ADD TO BAG - {{ product.price | money }}</button>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <!-- Draggable Progress Bar -->
+    <div>
+      <div class="swiper-scrollbar"></div>
+      <div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.bestSellerProducts', {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+        hide: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Best Seller",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "best_seller",
+      "label": "Best Seller Collection"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading"
+    },
+    {
+      "type": "range",
+      "id": "font_size_main_heading",
+      "label": "Main Heading Font Size",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Main Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "sub_main_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "range",
+      "id": "font_size_sub_heading",
+      "label": "Sub Heading Font Size",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "sub_heading_color",
+      "label": "Sub Heading Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#DB763F"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP ALL"
+    },
+    {
+      "type": "range",
+      "id": "show_product_limit",
+      "label": "Product Limit",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Seller Collection"
+    }
+  ]
+}
+{% endschema %}
