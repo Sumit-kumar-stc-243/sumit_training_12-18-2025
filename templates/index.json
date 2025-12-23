@@ -292,6 +292,7 @@
         "heading_opacity": 8,
         "heading_color": "#a7a1a1",
         "font_size_heading": 60,
+        "font_size_heading_mobile": 24,
         "heading_top": "100",
         "heading_left": "91",
         "heading_bottom": "",
@@ -300,6 +301,7 @@
         "sub_heading_opacity": 10,
         "sub_heading_color": "#ffffff",
         "font_size_sub_heading": 60,
+        "font_size_sub_heading_mobile": 18,
         "sub_heading_top": "150",
         "sub_heading_left": "91",
         "sub_heading_bottom": "",
@@ -346,6 +348,22 @@
         "overlay_color": "#000000",
         "background_color_opacity": 0
       }
+    },
+    "best_seller_yQh6pH": {
+      "type": "best-seller",
+      "name": "Best Seller Collection",
+      "settings": {
+        "best_seller": "trousers-pants-copy",
+        "main_heading": "Love Your Skin With Our Bestsellers",
+        "font_size_main_heading": 32,
+        "main_heading_color": "#000000",
+        "sub_main_heading": "A skincare line crafted to perfection for 50 years",
+        "font_size_sub_heading": 24,
+        "sub_heading_color": "#555555",
+        "button_color": "#DB763F",
+        "button_text": "SHOP ALL",
+        "show_product_limit": 10
+      }
     }
   },
   "order": [
@@ -353,6 +371,7 @@
     "custom_collection_chqxEw",
     "custom_collection_WK6QnB",
     "skin_care_product_section_DAFCwh",
-    "product_cta_b9WECM"
+    "product_cta_b9WECM",
+    "best_seller_yQh6pH"
   ]
 }
