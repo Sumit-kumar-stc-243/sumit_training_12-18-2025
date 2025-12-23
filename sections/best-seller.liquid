@@ -53,7 +53,7 @@
   .bestSellerProducts .swiper-scrollbar {
     height: 4px;
     background: #e5e5e5;
-    bottom: 0;
+    position:static;
   }
 
   .bestSellerProducts .swiper-scrollbar-drag {
@@ -63,9 +63,27 @@
   .swiper-slide a{
     text-decoration:none;
   }
-  .swiper-button-next .swiper-button-prev{
-    position: static !important;
-    width: 10px !important;
+  .swiper-button-next , .swiper-button-prev{
+    color: black;
+    border-radius: 50%;
+    border: 1px solid rgba(86, 86, 86, 0.3);
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    position: relative;
+    bottom: -6px;
+  }
+  .swiper-buttons{
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+    width: 10%;
+  }
+  .draggleBar{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    margin-top: 10px;
   }
 </style>
 
@@ -110,9 +128,9 @@
       {% endif %}
     </div>
     <!-- Draggable Progress Bar -->
-    <div>
+    <div class="draggleBar">
       <div class="swiper-scrollbar"></div>
-      <div>
+      <div class="swiper-buttons">
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
