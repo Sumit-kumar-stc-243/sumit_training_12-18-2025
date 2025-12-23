@@ -125,9 +125,22 @@
   </div>
 </div>
 {% javascript %}
+  function updateCartCount() {
+    fetch('/cart?section_id=cart-icon-bubble')
+      .then((res) => res.text())
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const currentBubble = document.getElementById('cart-icon-bubble');
+        const newBubble = doc.getElementsByClassName('cart-count-bubble')[0];
+        if(newBubble && currentBubble){
+          currentBubble.appendChild(newBubble)
+        }
+      })
+      .catch((error)=>console.warn(error))
+  }
+
   window.handleCtaButton = function (clickedButton) {
     const productId = clickedButton.dataset.productId;
-
     const allButtons = document.querySelectorAll('.cta');
     const allCarts = document.querySelectorAll('.product-cart');
 
@@ -187,6 +200,7 @@
       .then(() => fetch('/cart?section_id=cart-drawer'))
       .then((res) => res.text())
       .then((html) => {
+        updateCartCount();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newDrawer = doc.getElementsByTagName('cart-drawer')[0];
