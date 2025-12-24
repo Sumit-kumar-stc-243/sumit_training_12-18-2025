@@ -1,3 +1,8 @@
+<script src="{{ 'cart-update.js' | asset_url }}" defer></script>
+
+
+
+
 <style>
   .best-seller-container {
     margin-bottom:20px !important;
@@ -126,7 +131,14 @@
                 >
                 <h4>{{ product.title }}</h4>
                 <h5>{{ product.type }}</h5>
-                <button>ADD TO BAG - {{ product.price | money }}</button>
+
+                <button
+                  class="add-to-cart"
+                  onclick="()=>handleAddToBag(this)"
+                  data-variant-id="{{product.choose_product.selected_or_first_available_variant.id }}"
+                >
+                  ADD TO BAG - {{ product.price | money }}
+                </button>
               </div>
             </a>
           </div>
