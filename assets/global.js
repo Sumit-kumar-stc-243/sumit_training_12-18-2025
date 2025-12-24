@@ -1,3 +1,49 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const wrappers = document.querySelectorAll('.video-wrapper');
+
+  wrappers.forEach(wrapper => {
+    const video = wrapper.querySelector('video');
+    const button = wrapper.querySelector('.play-btn');
+
+    // Button click
+    button.addEventListener('click', () => {
+      wrappers.forEach(otherWrapper => {
+        const otherVideo = otherWrapper.querySelector('video');
+        const otherButton = otherWrapper.querySelector('.play-btn');
+
+        if (otherVideo !== video) {
+          otherVideo.pause();
+          otherButton.textContent = 'Play';
+        }
+      });
+
+      if (video.paused) {
+        video.play();
+        button.textContent = 'Pause';
+      } else {
+        video.pause();
+        button.textContent = 'Play';
+      }
+    });
+
+    // When video ends
+    video.addEventListener('ended', () => {
+      button.textContent = 'Play';
+    });
+
+    // If user plays video by any other way
+    video.addEventListener('play', () => {
+      button.textContent = 'Pause';
+    });
+
+    video.addEventListener('pause', () => {
+      button.textContent = 'Play';
+    });
+  });
+});
+
+
+
 function getFocusableElements(container) {
   return Array.from(
     container.querySelectorAll(

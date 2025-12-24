@@ -8,6 +8,7 @@
   }
   .video-wrapper {
     width: 100%;
+    position:relative;
   }
   .video-wrapper video {
     width: 100%;
@@ -32,7 +33,7 @@
     background-color:#FFFFFF;
     border-radius:10px;
   }
-  
+
   .swiper-slide{
     flex-shrink: 0;
   }
@@ -74,7 +75,22 @@
     padding:5px;
     color: black;
    }
-
+   .play-btn {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color:black;
+    color:white;
+  }
 </style>
 
 <div class="video-section-container">
@@ -82,8 +98,9 @@
     <div class="video-wrapper">
       {{
         section.settings.video
-        | video_tag: poster: section.settings.poster, controls: true, autoplay: false, loop: true, muted: false
+        | video_tag: poster: section.settings.poster, controls: false, autoplay: false, loop: true, muted: false
       }}
+      <button class="play-btn">Play</button>
     </div>
   {% endif %}
 
@@ -123,7 +140,7 @@
       spaceBetween: 0,
       autoplay: false,
       watchOverflow: true,
-      
+
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
