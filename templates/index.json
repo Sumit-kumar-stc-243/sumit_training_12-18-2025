@@ -360,9 +360,70 @@
         "sub_main_heading": "A skincare line crafted to perfection for 50 years",
         "font_size_sub_heading": 24,
         "sub_heading_color": "#555555",
-        "button_color": "#DB763F",
+        "button_color": "#db763f",
         "button_text": "SHOP ALL",
         "show_product_limit": 10
+      }
+    },
+    "video_section_Q9k9y9": {
+      "type": "video-section",
+      "blocks": {
+        "slide_ixDkYm": {
+          "type": "Slide",
+          "settings": {
+            "icon": "shopify://shop_images/data-quality_1.png",
+            "heading_slide": "Quality",
+            "para_slide": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "slide_86WJtr": {
+          "type": "Slide",
+          "settings": {
+            "icon": "shopify://shop_images/data-quality_1.png",
+            "heading_slide": "Quality",
+            "para_slide": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "slide_LNDMLm": {
+          "type": "Slide",
+          "settings": {
+            "icon": "shopify://shop_images/data-quality_1.png",
+            "heading_slide": "Quality",
+            "para_slide": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "slide_Ekf3nW": {
+          "type": "Slide",
+          "settings": {
+            "icon": "shopify://shop_images/data-quality_1.png",
+            "heading_slide": "Quality",
+            "para_slide": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "slide_VnzwNG": {
+          "type": "Slide",
+          "settings": {
+            "icon": "shopify://shop_images/data-quality_1.png",
+            "heading_slide": "Quality",
+            "para_slide": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        }
+      },
+      "block_order": [
+        "slide_ixDkYm",
+        "slide_86WJtr",
+        "slide_LNDMLm",
+        "slide_Ekf3nW",
+        "slide_VnzwNG"
+      ],
+      "name": "Video Section",
+      "settings": {
+        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "video_height": 500,
+        "heading": "Know Our Story",
+        "para": "<p><strong>Amanté </strong>is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. <em>5 words which</em> describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.Our products are made for the eve<strong>r evolving modern woman of today</strong> who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes. <br/><br/></p>",
+        "btn_text": "Read More",
+        "btn_url": ""
       }
     }
   },
@@ -372,6 +433,7 @@
     "custom_collection_WK6QnB",
     "skin_care_product_section_DAFCwh",
     "product_cta_b9WECM",
-    "best_seller_yQh6pH"
+    "best_seller_yQh6pH",
+    "video_section_Q9k9y9"
   ]
 }
