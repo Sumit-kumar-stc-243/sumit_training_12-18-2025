@@ -1,0 +1,69 @@
+<style>
+  .trust-badges-section {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    padding:40px 0px;
+    background-color:#FFF9F6;
+  }
+  .badges-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .badge-heading {
+    font-size:18px;
+  }
+</style>
+
+<div class="trust-badges-section">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="badges-container">
+        <img
+          src="{{ block.settings.image | image_url: width: 100 }}"
+          alt="{{ block.settings.text | escape }}"
+          width="26px"
+          height="26px"
+        >
+
+        {% if block.settings.text != blank %}
+          <h1 class="badge-heading">
+            {{ block.settings.text }}
+          </h1>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "trust-badges",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badges",
+      "name": "badges",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges"
+    }
+  ]
+}
+{% endschema %}
