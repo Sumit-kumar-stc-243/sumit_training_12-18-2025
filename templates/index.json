@@ -486,6 +486,39 @@
         "btn_text": "Read More",
         "btn_url": ""
       }
+    },
+    "trust_badges_ihq4aN": {
+      "type": "trust-badges",
+      "blocks": {
+        "badges_QaAXqH": {
+          "type": "badges",
+          "settings": {
+            "image": "shopify://shop_images/data-quality_1.png",
+            "text": "Discreet Packaging"
+          }
+        },
+        "badges_Bc3Cba": {
+          "type": "badges",
+          "settings": {
+            "image": "shopify://shop_images/data-quality_1.png",
+            "text": "15 Day Return"
+          }
+        },
+        "badges_qrXbfc": {
+          "type": "badges",
+          "settings": {
+            "image": "shopify://shop_images/data-quality_1.png",
+            "text": "Sumit"
+          }
+        }
+      },
+      "block_order": [
+        "badges_QaAXqH",
+        "badges_Bc3Cba",
+        "badges_qrXbfc"
+      ],
+      "name": "Trist Badges",
+      "settings": {}
     }
   },
   "order": [
@@ -496,6 +529,7 @@
     "product_cta_b9WECM",
     "best_seller_yQh6pH",
     "video_section_Q9k9y9",
-    "video_section_pbRdb6"
+    "video_section_pbRdb6",
+    "trust_badges_ihq4aN"
   ]
 }
