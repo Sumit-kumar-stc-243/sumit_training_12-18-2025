@@ -328,7 +328,7 @@
   `;
 
         try {
-          const response = await fetch('/products.json?limit=5');
+          const response = await fetch('/products.json?limit=5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd' }, body: JSON.stringify({ query }) }););
           const data = await response.json();
 
           console.log(data.products);
@@ -336,6 +336,8 @@
           data.products.forEach((product) => {
             console.log(product.title, product.variants[0].price);
           });
+
+          
         } catch (error) {
           console.error('GraphQL Error:', error);
         }
