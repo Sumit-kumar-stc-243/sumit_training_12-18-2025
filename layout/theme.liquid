@@ -307,7 +307,11 @@
     </a>
 
     {% comment %} testing for GraphQl {% endcomment %}
-document.addEventListener('DOMContentLoaded', async () => {
+    
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', async () => {
   const query = `
     query MyQuery {
       products(first: 5) {
@@ -342,6 +346,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+    </script>
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
