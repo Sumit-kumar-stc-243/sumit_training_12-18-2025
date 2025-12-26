@@ -328,18 +328,17 @@
   `;
 
         try {
-         const response = await fetch('/api/2024-01/graphql.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd'
-      },
-      body: JSON.stringify({ query })
-    });
+          const response = await fetch('/api/2024-01/graphql.json', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd',
+            },
+            body: JSON.stringify({ query }),
+          });
 
-    const data = await response.json();
-    console.log(data);
-
+          const data = await response.json();
+          console.log(data.data);
         } catch (error) {
           console.error('GraphQL Error:', error);
         }
