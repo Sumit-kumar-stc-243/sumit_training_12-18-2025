@@ -307,8 +307,41 @@
     </a>
 
     {% comment %} testing for GraphQl {% endcomment %}
+document.addEventListener('DOMContentLoaded', async () => {
+  const query = `
+    query MyQuery {
+      products(first: 5) {
+        nodes {
+          id
+          title
+          priceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  `;
 
-    
+  try {
+    const response = await fetch('/api/2024-07/graphql.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': 'STOREFRONT_ACCESS_TOKEN'
+      },
+      body: JSON.stringify({ query })
+    });
+
+    const data = await response.json();
+    console.log(data.data.products.nodes);
+  } catch (error) {
+    console.error('GraphQL Error:', error);
+  }
+});
+
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
