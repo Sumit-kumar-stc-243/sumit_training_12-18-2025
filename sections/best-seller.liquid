@@ -1,8 +1,5 @@
 <script src="{{ 'cart-update.js' | asset_url }}" defer></script>
 
-
-
-
 <style>
   .best-seller-container {
     margin-bottom:20px !important;
@@ -119,8 +116,8 @@
       {% if section.settings.best_seller != blank %}
         {% for product in section.settings.best_seller.products limit: section.settings.show_product_limit %}
           <div class="swiper-slide">
-            <a href="{{ product.url }}">
-              <div class="product-card">
+            <div class="product-card">
+              <a href="{{ product.url }}">
                 <img
                   src="{{ product.featured_image | image_url: width: 300 }}"
                   alt="{{ product.title }}"
@@ -131,16 +128,16 @@
                 >
                 <h4>{{ product.title }}</h4>
                 <h5>{{ product.type }}</h5>
+              </a>
 
-                <button
-                  class="add-to-cart"
-                  onclick="()=>handleAddToBag(this)"
-                  data-variant-id="{{product.choose_product.selected_or_first_available_variant.id }}"
-                >
-                  ADD TO BAG - {{ product.price | money }}
-                </button>
-              </div>
-            </a>
+              <button
+                class="add-to-cart"
+                type="button"
+                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              >
+                ADD TO BAG - {{ product.price | money }}
+              </button>
+            </div>
           </div>
         {% endfor %}
       {% endif %}

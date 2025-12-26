@@ -69,17 +69,22 @@
   </div>
   <div class="collection-container">
     {%- for block in section.blocks -%}
-      <div class="collection-item" style="text-align: {{ block.settings.card_text_alignment | default: section.settings.card_text_alignment }};">
+      <div
+        class="collection-item"
+        style="text-align: {{ block.settings.card_text_alignment | default: section.settings.card_text_alignment }};"
+      >
         <div class="collection-item-image collection-item-image--{{ block.settings.image_aspect_ratio | default: section.settings.image_aspect_ratio }}">
           {%- if block.settings.image != blank -%}
-            <img
-              src="{{ block.settings.image | image_url: width: section.settings.image_max_width }}"
-              alt="{{ block.settings.image.alt | escape }}"
-              loading="lazy"
-              width="{{ section.settings.image_max_width }}"
-              height="{{ section.settings.image_max_width | divided_by: block.settings.image.aspect_ratio | round }}"
-              style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }};"
-            >
+            <a href="{{ block.settings.collection.url }}">
+              <img
+                src="{{ block.settings.image | image_url: width: section.settings.image_max_width }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ section.settings.image_max_width }}"
+                height="{{ section.settings.image_max_width | divided_by: block.settings.image.aspect_ratio | round }}"
+                style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }};"
+              >
+            </a>
           {%- endif -%}
         </div>
         {%- if block.settings.title != blank -%}
@@ -188,6 +193,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Add Collection"
         },
         {
           "type": "text",
