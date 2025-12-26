@@ -308,43 +308,43 @@
 
     {% comment %} testing for GraphQl {% endcomment %}
 
-    <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-        const query = `
-    query MyQuery {
-      products(first: 5) {
-        nodes {
-          id
-          title
-          priceRange {
-            maxVariantPrice {
-              amount
-              currencyCode
+      <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+          const query = `
+      query MyQuery {
+        products(first: 5) {
+          nodes {
+            id
+            title
+            priceRange {
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
             }
           }
         }
       }
-    }
-  `;
+    `;
 
-        try {
-          const response = await fetch('/api/2024-01/graphql.json', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd',
-            },
-            body: JSON.stringify({ query }),
-          });
+          try {
+            const response = await fetch('/api/2024-01/graphql.json', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd',
+              },
+              body: JSON.stringify({ query }),
+            });
 
-          const data = await response.json();
-          console.log(data.data.products.nodes);
-        } catch (error) {
-          console.error('GraphQL Error:', error);
-        }
-      });
-    </script>
-    <script>
+            const data = await response.json();
+            console.log(data.data.products.nodes);
+          } catch (error) {
+            console.error('GraphQL Error:', error);
+          }
+        });
+      </script>
+      <script>
       console.log('Storefront GraphQL script loaded');
     </script>
 
