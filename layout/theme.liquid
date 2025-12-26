@@ -338,7 +338,7 @@
           });
 
           const data = await response.json();
-          console.log(data.data.products);
+          console.log(data.data.products.nodes);
         } catch (error) {
           console.error('GraphQL Error:', error);
         }
