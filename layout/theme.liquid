@@ -307,12 +307,10 @@
     </a>
 
     {% comment %} testing for GraphQl {% endcomment %}
-    
 
     <script>
-
-document.addEventListener('DOMContentLoaded', async () => {
-  const query = `
+      document.addEventListener('DOMContentLoaded', async () => {
+        const query = `
     query MyQuery {
       products(first: 5) {
         nodes {
@@ -329,28 +327,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   `;
 
-  try {
-    const response = await fetch('/products.json?limit=5', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd'
-      },
-      body: JSON.stringify({ query })
-    });
+        try {
+          const response = await fetch('/products.json?limit=5');
+          const data = await response.json();
 
-    const data = await response.json();
-    console.log(data.data.products.nodes);
-  } catch (error) {
-    console.error('GraphQL Error:', error);
-  }
-});
+          console.log(data.products);
 
+          data.products.forEach((product) => {
+            console.log(product.title, product.variants[0].price);
+          });
+        } catch (error) {
+          console.error('GraphQL Error:', error);
+        }
+      });
     </script>
     <script>
-  console.log('Storefront GraphQL script loaded');
-</script>
-
+      console.log('Storefront GraphQL script loaded');
+    </script>
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
