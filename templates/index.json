@@ -63,6 +63,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_44.jpg",
+            "collection": "",
             "title": "Face Oils",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -78,6 +79,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_46.jpg",
+            "collection": "",
             "title": "Serums",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -93,6 +95,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_47.jpg",
+            "collection": "",
             "title": "Cleansers",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -108,6 +111,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_45.jpg",
+            "collection": "",
             "title": "Bath",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -147,6 +151,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Group_14071_822766f1-9211-4690-a1d9-dc0033f94753.png",
+            "collection": "",
             "title": "Vegan",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -162,6 +167,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Group_14073.png",
+            "collection": "",
             "title": "Non-Toxic",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -177,6 +183,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Group_14075_1ff9896a-817a-4ded-bc51-4129f8931411.png",
+            "collection": "",
             "title": "Recyclable Packaging",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -192,6 +199,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Group_14070_9a46abc9-bc3c-415b-8b18-cd8faf256154.png",
+            "collection": "",
             "title": "Clean Beauty",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -207,6 +215,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Group_14072.png",
+            "collection": "",
             "title": "Sulphate Free",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -222,6 +231,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/Frame_240923_713c901e-54a8-439d-a7f6-295885069d24.jpg",
+            "collection": "",
             "title": "Cruelty Free",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -423,7 +433,7 @@
         "heading": "Know Our Story",
         "para": "<p><strong>Amanté </strong>is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. <em>5 words which</em> describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.Our products are made for the eve<strong>r evolving modern woman of today</strong> who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes. <br/><br/></p>",
         "btn_text": "Read More",
-        "btn_url": ""
+        "btn_url": "shopify://pages/contact"
       }
     },
     "video_section_pbRdb6": {
@@ -484,7 +494,7 @@
         "heading": "Know Our Story",
         "para": "<p><strong>Amanté </strong>is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. <em>5 words which</em> describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.Our products are made for the eve<strong>r evolving modern woman of today</strong> who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes. <br/><br/></p>",
         "btn_text": "Read More",
-        "btn_url": ""
+        "btn_url": "shopify://pages/about-us-1"
       }
     },
     "trust_badges_ihq4aN": {
