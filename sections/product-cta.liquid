@@ -113,20 +113,19 @@
               {{ product_info.price }}
             </span>
             <div class="buttonCart">
-              {% assign variant = product.selected_or_first_available_variant %}
-
+              
               <button
+                {% if product_info.available == false  %}
+                  disabled
+                {% endif %}
                 type="button"
                 class="add-to-cart"
                 data-variant-id="{{ button.settings.choose_product.selected_or_first_available_variant.id }}"
-                {% if variant.inventory_management == 'shopify' and variant.inventory_quantity <= 0 %}
-                  disabled
-                {% endif %}
               >
-                {% if variant.inventory_quantity <= 0 %}
-                  Sold Out
+                {% if product_info.available  %}
+                 Add to cart
                 {% else %}
-                  Add to Cart
+                  Sold out
                 {% endif %}
               </button>
               <a href="{{ product_info.url }}">View</a>
@@ -137,9 +136,9 @@
     {% endfor %}
   </div>
 </div>
-{% javascript %}
- 
-  window.handleCtaButton = function (clickedButton) {
+
+<script>
+   window.handleCtaButton = function (clickedButton) {
     const productId = clickedButton.dataset.productId;
     const allButtons = document.querySelectorAll('.cta');
     const allCarts = document.querySelectorAll('.product-cart');
@@ -177,9 +176,7 @@
     clickedButton.style.cursor = 'not-allowed';
   };
 
- 
-{% endjavascript %}
-
+</script>
 {% schema %}
 {
   "name": "product-cta",

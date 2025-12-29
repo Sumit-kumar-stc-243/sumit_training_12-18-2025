@@ -308,45 +308,50 @@
 
     {% comment %} testing for GraphQl {% endcomment %}
 
-      <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-          const query = `
-      query MyQuery {
-        products(first: 5) {
-          nodes {
-            id
-            title
-            priceRange {
-              maxVariantPrice {
-                amount
-                currencyCode
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const query = `
+          query {
+            products(first: 1) {
+              nodes {
+                variants(first: 10) {
+                  nodes {
+                    availableForSale
+                    quantityAvailable
+                  }
+                }
               }
             }
           }
+        `;
+    
+        try {
+          const response = await fetch('/api/2024-01/graphql.json', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd',
+            },
+            body: JSON.stringify({ query }),
+          });
+    
+          const data = await response.json();
+    
+          const products = data.data.products.nodes;
+    
+          products.forEach(product => {
+            const hasOutOfStock = product.variants.nodes.some(
+              v => !v.availableForSale
+            );
+            console.log(product.id, 'has out of stock variants:', hasOutOfStock);
+          });
+    
+        } catch (error) {
+          console.error('GraphQL Error:', error);
         }
-      }
-    `;
-
-          try {
-            const response = await fetch('/api/2024-01/graphql.json', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Shopify-Storefront-Access-Token': 'b3bb29e8d8c21c4bdfef660da16877fd',
-              },
-              body: JSON.stringify({ query }),
-            });
-
-            const data = await response.json();
-            console.log(data.data.products.nodes);
-          } catch (error) {
-            console.error('GraphQL Error:', error);
-          }
-        });
-      </script>
-      <script>
-      console.log('Storefront GraphQL script loaded');
+      });
     </script>
+    
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
@@ -416,16 +421,13 @@
         const product = window.ShopifyAnalytics?.meta?.product;
         if (!product?.id) return;
         const storedIds = JSON.parse(localStorage.getItem('productIds')) || [];
-        const filteredIds = storedIds.filter(id => id !== product.id);
+        const filteredIds = storedIds.filter((id) => id !== product.id);
         filteredIds.unshift(product.id);
         const updatedIds = filteredIds.slice(0, 8);
         localStorage.setItem('productIds', JSON.stringify(updatedIds));
       });
     </script>
-    
-    
-    
-  
+
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
