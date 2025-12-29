@@ -296,7 +296,7 @@
       "settings": {
         "background_image": "shopify://shop_images/beauty-portrait-mystery-smiling-ginger-woman-with-long-hair-posing-sideways-looking_1.png",
         "background_overlay_color": "#000000",
-        "background_overlay_height": "500",
+        "background_overlay_height": "400",
         "background_overlay_opacity": 3,
         "heading": "SKINCARE",
         "heading_opacity": 8,
