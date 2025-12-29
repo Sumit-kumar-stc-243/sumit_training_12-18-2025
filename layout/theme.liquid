@@ -412,12 +412,19 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        if (window.location.pathname.startsWith('/products/')) {
-          const product = window.ShopifyAnalytics?.meta?.product;
-          console.log('product',product)
-          localStorage.setItem('productIds', JSON.stringify('sumit'));
+        if (!window.location.pathname.startsWith('/products/')) return;
+        const product = window.ShopifyAnalytics?.meta?.product;
+        if (!product?.id) return;
+        const storedIds = JSON.parse(localStorage.getItem('productIds')) || [];
+        const filteredIds = storedIds.filter(id => id !== product.id);
+        filteredIds.unshift(product.id);
+        const updatedIds = filteredIds.slice(0, 8);
+        localStorage.setItem('productIds', JSON.stringify(updatedIds));
       });
     </script>
+    
+    
+    
   
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
