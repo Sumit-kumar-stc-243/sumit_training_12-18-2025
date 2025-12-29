@@ -113,12 +113,21 @@
               {{ product_info.price }}
             </span>
             <div class="buttonCart">
+              {% assign variant = product.selected_or_first_available_variant %}
+
               <button
                 type="button"
                 class="add-to-cart"
                 data-variant-id="{{ button.settings.choose_product.selected_or_first_available_variant.id }}"
+                {% if variant.inventory_management == 'shopify' and variant.inventory_quantity <= 0 %}
+                  disabled
+                {% endif %}
               >
-                Add to Cart
+                {% if variant.inventory_quantity <= 0 %}
+                  Sold Out
+                {% else %}
+                  Add to Cart
+                {% endif %}
               </button>
               <a href="{{ product_info.url }}">View</a>
             </div>
