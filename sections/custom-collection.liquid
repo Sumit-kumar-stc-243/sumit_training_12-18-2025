@@ -74,7 +74,7 @@
         style="text-align: {{ block.settings.card_text_alignment | default: section.settings.card_text_alignment }};"
       >
         <div class="collection-item-image collection-item-image--{{ block.settings.image_aspect_ratio | default: section.settings.image_aspect_ratio }}">
-          {%- if block.settings.image != blank -%}
+          {% if block.settings.collection != blank and block.settings.collection.url != blank %}
             <a href="{{ block.settings.collection.url }}">
               <img
                 src="{{ block.settings.image | image_url: width: section.settings.image_max_width }}"
@@ -85,7 +85,17 @@
                 style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }};"
               >
             </a>
-          {%- endif -%}
+          {% else %}
+            <img
+              src="{{ block.settings.image | image_url: width: section.settings.image_max_width }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image_max_width }}"
+              height="{{ section.settings.image_max_width | divided_by: block.settings.image.aspect_ratio | round }}"
+              style="border-radius: {{ block.settings.image_border_radius | default: section.settings.image_border_radius }};"
+            >
+          {% endif %}
+          
         </div>
         {%- if block.settings.title != blank -%}
           <div

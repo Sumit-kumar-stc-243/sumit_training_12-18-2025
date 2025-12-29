@@ -368,6 +368,15 @@
       };
     </script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.location.pathname.startsWith('/products/')) {
+          const product = window.ShopifyAnalytics?.meta?.product;
+          console.log('product',product)
+          localStorage.setItem('productIds', JSON.stringify('sumit'));
+      });
+    </script>
+  
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
