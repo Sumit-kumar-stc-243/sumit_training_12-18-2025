@@ -1,9 +1,9 @@
 <style>
-  .custom-collection-section {
+  .custom-collection-sections {
     padding: 40px 0;
   }
 
-  .custom-collection-section .heading {
+  .custom-collection-sections .heading {
     margin-bottom: 24px;
     text-align: {{ section.settings.heading_alignment }};
     color: {{ section.settings.heading_color }};
@@ -11,59 +11,59 @@
     font-weight: 600;
   }
 
-  .custom-collection-section .collection-container {
+  .custom-collection-sections .collection-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 24px;
   }
 
-  .custom-collection-section .collection-item {
+  .custom-collection-sections .collection-item {
     text-align: left;
   }
 
-  .custom-collection-section .collection-item-image {
+  .custom-collection-sections .collection-item-image {
     width: 100%;
     overflow: hidden;
   }
 
-  .custom-collection-section .collection-item-image--square {
+  .custom-collection-sections .collection-item-image--square {
     aspect-ratio: 1 / 1;
   }
 
-  .custom-collection-section .collection-item-image--landscape {
+  .custom-collection-sections .collection-item-image--landscape {
     aspect-ratio: 4 / 3;
   }
 
-  .custom-collection-section .collection-item-image--portrait {
+  .custom-collection-sections .collection-item-image--portrait {
     aspect-ratio: 3 / 4;
   }
 
-  .custom-collection-section .collection-item-image--auto img {
+  .custom-collection-sections .collection-item-image--auto img {
     height: auto;
   }
 
-  .custom-collection-section .collection-item-image img {
+  .custom-collection-sections .collection-item-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .custom-collection-section .collection-item-title {
+  .custom-collection-sections .collection-item-title {
     margin-top: 12px;
     font-weight: 500;
   }
 
-  .custom-collection-section .collection-item-image img:first-child {
+  .custom-collection-sections .collection-item-image img:first-child {
     border-radius: 60px 0px 0px 0px;
   }
 
-  .custom-collection-section .collection-item-subtitle {
+  .custom-collection-sections .collection-item-subtitle {
     margin-top: 4px;
   }
 </style>
 
-<div class="custom-collection-section">
+<div class="custom-collection-sectionss">
   <div class="heading">
     {{ section.settings.heading }}
   </div>
