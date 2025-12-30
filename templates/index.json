@@ -26,8 +26,8 @@
             "primary_button_label": "SkincareQuiz",
             "primary_button_link": "shopify://collections/trousers-pants-copy",
             "show_secondary_button": false,
-            "secondary_button_label": "",
-            "secondary_button_link": ""
+            "secondary_button_label": "Sumit",
+            "secondary_button_link": "shopify://blogs/news"
           }
         },
         "slide_Hgc8xX": {
@@ -63,7 +63,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_44.jpg",
-            "collection": "",
+            "collection": "best-seller",
             "title": "Face Oils",
             "card_text_alignment": "center",
             "subtitle": "",
