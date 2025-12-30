@@ -26,8 +26,8 @@
             "primary_button_label": "SkincareQuiz",
             "primary_button_link": "shopify://collections/trousers-pants-copy",
             "show_secondary_button": false,
-            "secondary_button_label": "",
-            "secondary_button_link": ""
+            "secondary_button_label": "Sumit",
+            "secondary_button_link": "shopify://blogs/news"
           }
         },
         "slide_Hgc8xX": {
@@ -63,14 +63,14 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_44.jpg",
-            "collection": "",
+            "collection": "best-seller",
             "title": "Face Oils",
             "card_text_alignment": "center",
             "subtitle": "",
             "image_aspect_ratio": "square",
             "image_border_radius": "60px 0 0 0",
             "item_title_color": "#111111",
-            "item_title_font_size": 16,
+            "item_title_font_size": 15,
             "item_subtitle_color": "#555555",
             "item_subtitle_font_size": 14
           }
@@ -79,7 +79,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_46.jpg",
-            "collection": "",
+            "collection": "shoes-copy",
             "title": "Serums",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -95,7 +95,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_47.jpg",
-            "collection": "",
+            "collection": "featured-products",
             "title": "Cleansers",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -111,7 +111,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_45.jpg",
-            "collection": "",
+            "collection": "featured-products",
             "title": "Bath",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -136,7 +136,7 @@
       "name": "Custom collection",
       "settings": {
         "heading": "GET STARTED",
-        "heading_alignment": "center",
+        "heading_alignment": "left",
         "heading_color": "#111111",
         "heading_font_size": 28,
         "card_text_alignment": "center",
