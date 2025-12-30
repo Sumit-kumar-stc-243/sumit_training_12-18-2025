@@ -79,7 +79,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_46.jpg",
-            "collection": "",
+            "collection": "shoes-copy",
             "title": "Serums",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -95,7 +95,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_47.jpg",
-            "collection": "",
+            "collection": "featured-products",
             "title": "Cleansers",
             "card_text_alignment": "center",
             "subtitle": "",
@@ -111,7 +111,7 @@
           "type": "custom_collection",
           "settings": {
             "image": "shopify://shop_images/image_45.jpg",
-            "collection": "",
+            "collection": "featured-products",
             "title": "Bath",
             "card_text_alignment": "center",
             "subtitle": "",
